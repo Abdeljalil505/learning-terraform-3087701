@@ -22,7 +22,7 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "var.instance_type"
 
-  vpc_security_groups_ids = [aws_security_group.blog.id]
+  vpc_security_group_ids = [aws_security_group.blog.id]
 
   tags = {
     Name = "HelloWorld"
@@ -31,7 +31,7 @@ resource "aws_instance" "web" {
 
 resource "aws_security_group" "blog" {
   name       = "blog"
-  desciption = "allow http and https in, everything out"
+  description = "allow http and https in, everything out"
 
   vpc_id = data.aws_vpc.default.id
  }
